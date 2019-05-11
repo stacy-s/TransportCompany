@@ -2,13 +2,9 @@ using System;
 
 namespace TransportCompany
 {
-    public class Transport
+    abstract class Transport
     {
-        private uint speed;
         private double carryingCapacity;
-        private string brand;
-        private uint numberOfStaff;
-        private uint numberOfPassengers;
 
         public double CarryingCapacity
         {
@@ -35,21 +31,21 @@ namespace TransportCompany
             NumberOfStaff = numberOfStaff;
             NumberOfPassengers = numberOfPassengers;
         }
-        
-        public Transport(){}
-
-
+        public Transport(uint speed, double carryingCapacity)
+        {
+            Speed = speed;
+            CarryingCapacity = carryingCapacity;
+        }
         public bool IsDeliverTheCargo(double cargoWeight)
         {
-            return !(carryingCapacity < cargoWeight);
+            return !(CarryingCapacity < cargoWeight);
         }
-
         public override string ToString()
         {
             return
-                $"Марка = {Brand}\nСкорость = {Speed}\n" +
-                $"Грузоподъемность = {CarryingCapacity}\nКоличество персонала = {NumberOfStaff}\n" +
-                $"Количество пассажиров = {NumberOfPassengers}";
+                $"\nBrand = {Brand}\nSpeed = {Speed}\n" +
+                $"Carrying capacity = {CarryingCapacity}\nThe number of staff = {NumberOfStaff}\n" +
+                $"The number of passengers = {NumberOfPassengers}";
         }
     }
 }
